@@ -1,0 +1,8 @@
+django==4.2.21
+django-environ==0.12.0      #Para poner en secreto las contraseñas, por ejemplo al publicar en github
+django-cors-headers==4.7.0  #Para permitir la comunicación entre el header y el backend
+djangorestframework==3.16.0
+pillow==11.2.1              #Para trabajar con imagenes
+django-storages==1.14.6     #Para guardar nuestras imagenes, videos, cosas pesadas las guardariamos en un CDN de AWS por ejemplo
+django-ckeditor==6.7.2      #Para crear contenido con mas opciones, negrita, italica, underline, etc. Los Post del Blog se verán mucho mejor
+psycopg==3.2.9              #Para trabajar con la base de datos de PostgreSQL
