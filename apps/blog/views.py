@@ -90,7 +90,12 @@ class SearchBlogView(APIView):
     matches = Post.postobjects.filter(
       Q(title__icontains = search_term) |
       Q(description__icontains = search_term) |
+      Q(content__icontains = search_term) |
       Q(category__name__icontains = search_term)
     )
-    serializer = PostListSerializer(matches, many=True)
-    return Response({'filtered_posts': serializer.data}, status=status.HTTP_200_OK)
+    
+    paginator = LargeSetPagination()
+    results = paginator.paginate_queryset(matches, request)
+    
+    serializer = PostListSerializer(results, many=True)
+    return paginator.get_paginated_response({'filtered_posts': serializer.data})
